@@ -25,9 +25,13 @@
     "typecheck": "tsc --noEmit",
     "test": "tsdx test"
   },
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@types/crypto-js": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "conventional-changelog-cli": "^2.1.1",
