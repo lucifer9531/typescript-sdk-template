@@ -46,10 +46,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://git.github.com/ruixijiejie/typescript-sdk-template.git"
+    "url": "git+https://github.com/ruixijiejie/typescript-sdk-template"
   },
   "bugs": {
-    "url": "https://git.github.com/ruixijiejie/typescript-sdk-template/issues"
+    "url": "https://github.com/ruixijiejie/typescript-sdk-template/issues"
   },
   "husky": {
     "hooks": {
