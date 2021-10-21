@@ -1,0 +1,66 @@
+{
+  "name": "typescript-sdk-template",
+  "version": "0.0.1",
+  "description": "TypeScript SDK 的模板项目",
+  "license": "MIT",
+  "author": {
+    "name": "IRIS",
+    "email": "kingiris@gmail.com"
+  },
+  "main": "dist/index.js",
+  "module": "dist/demosdk.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsdx watch",
+    "serve": "npm run dev ENV=dev",
+    "build": "tsdx build --format cjs,esm,umd --name demosdk NODE_ENV=production",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "lint:lint-staged": "lint-staged -c ./lintstagedrc.js",
+    "lint:pretty": "pretty-quick --staged",
+    "publish:ci": "npm run build && npx np",
+    "format": "prettier --write src/**/*.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsdx test"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "conventional-changelog-cli": "^2.1.1",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-define-config": "^1.0.8",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "np": "^7.5.0",
+    "prettier": "^2.3.0",
+    "prettier-config-standard": "^4.0.0",
+    "pretty-quick": "^3.1.0",
+    "tsdx": "^0.14.1",
+    "typescript": "^4.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.github.com/ruixijiejie/typescript-sdk-template.git"
+  },
+  "bugs": {
+    "url": "https://git.github.com/ruixijiejie/typescript-sdk-template/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:lint-staged && npm run lint:pretty",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/"
+  },
+  "engines": {
+    "node": "^12 || >=14"
+  }
+}
