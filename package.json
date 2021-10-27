@@ -1,66 +1,65 @@
 {
-  "name": "typescript-sdk-template",
-  "version": "0.0.1",
-  "description": "TypeScript SDK 的模板项目",
-  "license": "MIT",
-  "author": {
-    "name": "IRIS",
-    "email": "kingiris@gmail.com"
-  },
+  "name": "ts-sdk-template",
+  "version": "1.0.0",
+  "description": "A simple typescript SDK template",
   "main": "dist/index.js",
-  "module": "dist/demosdk.esm.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
-    "dev": "tsdx watch",
-    "serve": "npm run dev ENV=dev",
-    "build": "tsdx build --format cjs,esm,umd --name demosdk NODE_ENV=production",
+    "clean": "rimraf dist",
+    "dev": " tsup src/index.ts --dts --format cjs,esm --watch",
+    "dev:client": "tsc -w --p tsconfig.es.json",
+    "build": "npm run clean  && tsup src/index.ts --dts --format cjs,esm && tsc -p tsconfig.es.json",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "lint:lint-staged": "lint-staged -c ./lintstagedrc.js",
-    "lint:pretty": "pretty-quick --staged",
-    "publish:ci": "npm run build && npx np",
-    "format": "prettier --write src/**/*.ts",
-    "typecheck": "tsc --noEmit",
-    "test": "tsdx test"
+    "prepublishOnly": "npm run build",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "prepare": "husky install"
   },
-  "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
-    "conventional-changelog-cli": "^2.1.1",
-    "eslint": "^7.27.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-define-config": "^1.0.8",
-    "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "np": "^7.5.0",
-    "prettier": "^2.3.0",
-    "prettier-config-standard": "^4.0.0",
-    "pretty-quick": "^3.1.0",
-    "tsdx": "^0.14.1",
-    "typescript": "^4.3.2"
-  },
+  "keywords": [
+    "sdk",
+    "template",
+    "hmr"
+  ],
+  "author": "IRIS",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ruixijiejie/typescript-sdk-template"
+    "url": "https://github.com/ruixijiejie/vite-plugin-mock"
   },
   "bugs": {
-    "url": "https://github.com/ruixijiejie/typescript-sdk-template/issues"
+    "url": "https://github.com/ruixijiejie/vite-plugin-mock/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:lint-staged && npm run lint:pretty",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "homepage": "https://github.com/ruixijiejie/vite-plugin-mock/tree/master/#readme",
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "esbuild": "0.11.3"
   },
-  "publishConfig": {
-    "registry": "https://www.npmjs.com/"
-  },
-  "engines": {
-    "node": "^12 || >=14"
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.5",
+    "tsup": "4.8.21",
+    "typescript": "^4.3.5"
   }
 }

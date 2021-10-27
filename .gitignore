@@ -1,6 +1,8 @@
 node_modules
 .DS_Store
 dist
+es
+.npmrc
 .cache
 
 test/upload-server/static
@@ -25,5 +27,4 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-# docs files
-docs
+coverage
